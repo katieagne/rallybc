@@ -1,11 +1,35 @@
-const express = require("express"),
-  morgan = require("morgan"),
-  app = express();
+// import db
 require("./db/config");
 
-// Parse incoming JSON into objects
+const express = require("express"),
+  morgan = require("morgan"),
+  app = express(),
+  cookieParser = require("cookie-parser"),
+  openRoutes = require("./routes/open");
+path = require("path");
+
+// parse incoming JSON into objects
 app.use(express.json());
-// Log all requests
+
+// log all requests
 app.use(morgan("dev"));
+
+// unauthenticated routes
+app.use("/users", openRoutes);
+
+app.use(cookieParser());
+
+if (process.env.NODE_ENV === "production") {
+  // serve any static files
+}
+
+if (process.env.NODE_ENV === "production") {
+  // handle react routing, return all requests to react app
+  app.get("*", (request, response) => {
+    this.response.sendFile(
+      path.resolve(__dirname, "..", "client", "build", "index.html")
+    );
+  });
+}
 
 module.exports = app;

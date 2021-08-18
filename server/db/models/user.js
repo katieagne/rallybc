@@ -28,8 +28,8 @@ const userSchema = new mongoose.Schema({
       if (value.toLowerCase().includes("password")) {
         throw new Error("Password can't be password");
       }
-      if (value.length < 6) {
-        throw new Error("Password must be at least 6 characters long");
+      if (value.length < 8) {
+        throw new Error("Password must be at least 8 characters long");
       }
     },
   },
@@ -75,12 +75,12 @@ userSchema.methods.generateAuthToken = async function () {
     process.env.JWT_SECRET,
     { expiresIn: "24h" }
   );
+
+  user.tokens = user.tokens.concat({ token });
+  await user.save();
+
+  return token;
 };
-
-user.tokens = user.tokens.concat({ token });
-await user.save();
-
-return token;
 
 // static method to find user by email and compare passwords
 userSchema.statics.findByCredentials = async (email, password) => {
