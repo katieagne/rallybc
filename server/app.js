@@ -5,8 +5,8 @@ const express = require("express"),
   morgan = require("morgan"),
   app = express(),
   cookieParser = require("cookie-parser"),
-  openRoutes = require("./routes/open");
-path = require("path");
+  openRoutes = require("./routes/open"),
+  path = require("path");
 
 // parse incoming JSON into objects
 app.use(express.json());
@@ -21,6 +21,7 @@ app.use(cookieParser());
 
 if (process.env.NODE_ENV === "production") {
   // serve any static files
+  app.use(express.static(path.resolve(__dirname, "..", "client", "build")));
 }
 
 if (process.env.NODE_ENV === "production") {
