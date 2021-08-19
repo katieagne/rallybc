@@ -52,7 +52,6 @@ const userSchema = new mongoose.Schema({
   ],
 });
 
-// TODO ask about this method, what is it doing?
 // instance method
 // the return value of this method is used in calls to
 // JSON.stringify(doc)
@@ -86,6 +85,7 @@ userSchema.methods.generateAuthToken = async function () {
 userSchema.statics.findByCredentials = async (email, password) => {
   const user = await User.findOne({ email });
   if (!user) throw new Error("Unable to log in");
+
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) throw new Error("Unable to log in");
   return user;

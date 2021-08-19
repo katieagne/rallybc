@@ -6,7 +6,11 @@ const express = require("express"),
   app = express(),
   cookieParser = require("cookie-parser"),
   openRoutes = require("./routes/open"),
+  secureRoutes = require("./routes/secure/users"),
+  cors = require("cors"),
   path = require("path");
+
+app.use(cors());
 
 // parse incoming JSON into objects
 app.use(express.json());
@@ -16,6 +20,9 @@ app.use(morgan("dev"));
 
 // unauthenticated routes
 app.use("/users", openRoutes);
+
+// authenticated routes
+app.use("/current", secureRoutes);
 
 app.use(cookieParser());
 
