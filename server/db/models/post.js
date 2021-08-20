@@ -4,35 +4,36 @@ const mongoose = require("mongoose"),
   jwt = require("jsonwebtoken");
 
 // post schema
-const postSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
-  },
-  postedBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  },
-  content: {
-    type: String,
-    required: true,
-  },
-  date: {
-    type: Date,
-  },
-  likes: {
-    type: Number,
-  },
-  replies: [
-    {
-      text: String,
-      postedBy: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-      },
+const postSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
     },
-  ],
-});
+    postedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+    content: {
+      type: String,
+      required: true,
+    },
+    likes: {
+      type: Number,
+    },
+    replies: [
+      {
+        text: String,
+        postedBy: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
+      },
+      { timestamps: true },
+    ],
+  },
+  { timestamps: true }
+);
 
 postSchema.methods.toJSON = function () {
   const post = this;

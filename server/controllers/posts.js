@@ -1,17 +1,26 @@
 const Post = require("../db/models/post");
 
 exports.createPost = async (req, res) => {
-  const { title, postedBy, content, date, likes } = req.body;
+  const { title, content, likes } = req.body;
   try {
-    const post = new Post({
+    const post = await new Post({
       title,
-      postedBy,
       content,
-      date,
       likes,
+      postedBy: req.decoded.id,
     });
+    await post.save();
     res.status(201).json(post);
   } catch (e) {
     res.status.status(400).json({ error: e.toString() });
+  }
+};
+
+exports.getAllPosts = async (req, res) => {
+  try {
+    const posts = await Post.find();
+    res.json(posts);
+  } catch (e) {
+    res.status(500).json({ error: e.toString() });
   }
 };
