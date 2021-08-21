@@ -21,6 +21,7 @@ const postSchema = new mongoose.Schema(
     likes: {
       type: Number,
     },
+    isGeneral: { type: Boolean },
     replies: [
       {
         text: String,

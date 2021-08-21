@@ -1,8 +1,106 @@
-body {
-  font-family: "Mulish";
+@import "../../partials/colors";
+@import "../../partials/fonts";
+@import "../../partials/mixins";
+@import "../../partials/screens";
+
+#dijit__WidgetBase_0 {
+  display: none;
+}
+.jimu-widget-onscreen-icon {
+  background-color: red;
 }
 
-.embed {
-  // width: 100%;
-  // height: 40vh;
+.main {
+  &__map {
+    width: 100%;
+    height: 40vh;
+  }
+  &__section-container {
+    @include mobile-container-padding;
+  }
+  &__title {
+    @include labels;
+    @include mobile-component-padding;
+    color: $text;
+  }
+  &__list {
+    @include flex;
+    justify-content: space-between;
+    list-style: none;
+  }
+  &__list-container {
+    width: calc(50% - 4px);
+  }
+  &__list-item {
+    @include body-copy;
+    margin-bottom: 1rem;
+  }
+  &__item-link {
+    @include no-decoration;
+    color: $text;
+    padding-bottom: 2px;
+    border-bottom: 1px solid $accent;
+    transition: color 0.5s;
+    &:hover {
+      color: $accent;
+    }
+  }
+  &__card {
+    @include flex;
+    background-color: $bg-alt;
+    background-size: cover;
+    background-position: 50%;
+    width: 100%;
+    height: 150px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 0.6rem;
+    box-shadow: 0px 6px 10px 1px #ccc;
+  }
+  &__card--resources {
+    justify-content: flex-start;
+    align-items: center;
+  }
+  &__card--support {
+    background-image: linear-gradient(
+        rgb(50, 50, 50, 0.2),
+        rgb(50, 50, 50, 0.2)
+      ),
+      url("../../assets/images/lake.jpeg");
+    margin-bottom: 1rem;
+    transition: all 0.5s;
+
+    &:hover {
+      background-image: linear-gradient(
+          rgba(160, 160, 160, 0.3),
+          rgb(160, 160, 160, 0.3)
+        ),
+        url("../../assets/images/lake.jpeg");
+    }
+  }
+  &__card--general {
+    background-image: linear-gradient(
+        rgb(50, 50, 50, 0.2),
+        rgb(50, 50, 50, 0.2)
+      ),
+      url("../../assets/images/wellsgray.jpeg");
+    transition: all 0.5s;
+
+    &:hover {
+      background-image: linear-gradient(
+          rgba(160, 160, 160, 0.3),
+          rgb(160, 160, 160, 0.3)
+        ),
+        url("../../assets/images/wellsgray.jpeg");
+    }
+  }
+  &__card-title {
+    @include header;
+    color: $text-light;
+    text-transform: uppercase;
+  }
+  &__card-link {
+    @include no-decoration;
+  }
 }

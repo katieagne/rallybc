@@ -1,0 +1,21 @@
+@import "../../partials/colors";
+@import "../../partials/fonts";
+@import "../../partials/mixins";
+@import "../../partials/screens";
+
+.login {
+  &__input-container {
+    @include flex-column;
+  }
+  &__input-label {
+    @include labels;
+    color: $text;
+    margin-bottom: 0.5rem;
+  }
+  &__input {
+    @include body-copy;
+    width: 80%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+  }
+}

@@ -8,6 +8,7 @@ const Post = require("../models/post"),
   faker = require("faker"),
   mongoose = require("mongoose");
 
+// reset database
 const dbReset = async () => {
   const collections = Object.keys(mongoose.connection.collections);
   for (const collectionName of collections) {
@@ -42,6 +43,7 @@ const dbReset = async () => {
       title: faker.name.title(),
       content: faker.lorem.paragraph(),
       likes: 0,
+      isGeneral: Boolean(Math.round(Math.random())),
       postedBy: userIdArray[Math.floor(Math.random() * userIdArray.length)],
       replies: [
         {

@@ -1,0 +1,40 @@
+@import "../../partials/colors";
+@import "../../partials/fonts";
+@import "../../partials/mixins";
+@import "../../partials/screens";
+
+.header {
+  @include mobile-container-padding;
+  background-color: $bg;
+  width: 100%;
+  color: $text;
+
+  &__logo {
+    @include header;
+  }
+
+  &__nav-container {
+    @include mobile-component-padding;
+  }
+
+  &__links-container {
+    @include flex;
+    list-style: none;
+  }
+  &__item {
+    @include labels;
+    margin-right: 0.5rem;
+  }
+  &__link {
+    @include no-decoration;
+    @include labels;
+    color: $accent;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.5s;
+
+    &:hover {
+      border-color: $accent;
+    }
+  }
+}

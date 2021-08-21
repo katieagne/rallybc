@@ -10,12 +10,6 @@ exports.createUser = async (req, res) => {
       password,
       postalCode,
     }).save();
-    // const token = await user.generateAuthToken();
-    // res.cookie("jwt", token, {
-    //   httpOnly: true,
-    //   sameSite: "Strict",
-    //   secure: process.env.NODE_ENV !== "production" ? false : true,
-    // });
     console.log(user);
     const userToken = jwt.sign(
       { id: user._id, email: user.email },
@@ -34,11 +28,6 @@ exports.loginUser = async (req, res) => {
   try {
     const user = await User.findByCredentials(email, password);
     const token = await user.generateAuthToken();
-    // res.cookie("jwt", token, {
-    //   httpOnly: true,
-    //   sameSite: "Strict",
-    //   secure: process.env.NODE_ENV !== "production" ? false : true,
-    // });
     const userToken = jwt.sign(
       { id: user._id, email: user.email },
       process.env.JWT_SECRET,
@@ -48,5 +37,14 @@ exports.loginUser = async (req, res) => {
     res.status(201).json({ user, userToken });
   } catch (e) {
     res.status(400).json({ error: e.toString() });
+  }
+};
+
+exports.getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (e) {
+    res.status(500).json({ error: e.toString() });
   }
 };

@@ -3,7 +3,7 @@ import axios from "axios";
 
 const SignUp = () => {
   const createUser = (obj) => {
-    axios.post("http://localhost:8080/users", obj);
+    axios.post("http://localhost:8080/api/users", obj);
   };
 
   function handleSubmit(e) {
