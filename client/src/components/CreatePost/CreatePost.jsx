@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 
 const CreatePost = () => {
+  // const history = useHistory();
   const token = sessionStorage.getItem("token");
   console.log(token);
   const config = {
@@ -21,6 +22,7 @@ const CreatePost = () => {
     };
     createPost(newPost);
     alert("post created!");
+    // history.push("/posts");
   }
 
   return (
