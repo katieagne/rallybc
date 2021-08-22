@@ -26,7 +26,10 @@ class Login extends Component {
       })
       .catch((e) => console.log(e.message));
   };
+
   render() {
+    const tokenOne = sessionStorage.getItem("token");
+    console.log(tokenOne);
     return (
       <div className="login">
         <h1 className="login__title">login</h1>

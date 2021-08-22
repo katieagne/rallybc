@@ -21,6 +21,12 @@ const Header = () => {
                 Login
               </Link>
             </li>
+            <li className="header__item">
+              <Link className="header__link" to="/posts/new">
+                post
+              </Link>
+            </li>
+            {/* Token check to hide this^^^^^ */}
           </ul>
         </article>
       </nav>
