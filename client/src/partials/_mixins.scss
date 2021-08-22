@@ -27,12 +27,6 @@
     @content;
   }
 }
-// phones (320px and up)
-@mixin xsmall {
-  @media (max-width: $xsmall) {
-    @content;
-  }
-}
 
 //// flex
 @mixin flex {
@@ -51,7 +45,7 @@
   padding: 0.5rem 0;
 }
 @mixin tablet-section-padding {
-  padding: 0 2.25rem 2.25rem 2.25rem;
+  padding: 2.25rem;
 }
 @mixin tablet-container-padding {
   padding: 0 2.25rem;
@@ -71,18 +65,18 @@
 
 //// typography
 @mixin header {
-  font-family: "Monsterrat-Bold", Arial, Helvetica, sans-serif;
+  font-family: "Monsterrat-Black", Arial, Helvetica, sans-serif;
   // color: $dark;
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 700;
 }
 @mixin subheader {
-  font-family: "Monsterrat-Bold", Arial, Helvetica, sans-serif;
+  font-family: "Monsterrat-Black", Arial, Helvetica, sans-serif;
   // color: $dark;
-  font-size: 0.88rem;
-  line-height: 1.38rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
 }
 @mixin body-copy {
   font-family: "Monsterrat", Arial, Helvetica, sans-serif;
@@ -107,45 +101,34 @@
   text-transform: uppercase;
 }
 
-@mixin tablet-hero-header {
-  font-family: "Mulish", Arial, Helvetica, sans-serif;
-  // color: $dark;
-  font-size: 3.75rem;
-  line-height: 4.25rem;
-  font-weight: 700;
-}
-@mixin tablet-header {
-  font-family: "Mulish", Arial, Helvetica, sans-serif;
+@mixin medium-header {
+  font-family: "Monsterrat-Black", Arial, Helvetica, sans-serif;
   // color: $dark;
   font-size: 2.25rem;
   line-height: 2.75rem;
-  padding-top: 3rem;
+  font-weight: 900;
+}
+@mixin medium-subheader {
+  font-family: "Monsterrat-Black", Arial, Helvetica, sans-serif;
+  // color: $dark;
+  font-size: 2.25rem;
+  line-height: 2.75rem;
   font-weight: 700;
 }
-@mixin tablet-subheader {
-  font-family: "Mulish", Arial, Helvetica, sans-serif;
-  // color: $dark;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-weight: 600;
-}
-@mixin tablet-body-copy {
-  font-family: "Mulish", Arial, Helvetica, sans-serif;
-  // color: $dark;
+@mixin medium-body-copy {
+  font-family: "Monsterrat", Arial, Helvetica, sans-serif;
   font-size: 0.88rem;
   line-height: 1.38rem;
   font-weight: 400;
 }
-@mixin tablet-body-copy-bold {
-  font-family: "Mulish", Arial, Helvetica, sans-serif;
-  // color: $dark;
+@mixin medium-body-copy-bold {
+  font-family: "Monsterrat-Bold", Arial, Helvetica, sans-serif;
   font-size: 0.81rem;
   line-height: 1.13rem;
   font-weight: 700;
 }
-@mixin tablet-labels {
-  font-family: "Mulish", Arial, Helvetica, sans-serif;
-  // color: $medium-alt;
+@mixin medium-labels {
+  font-family: "Monsterrat-Bold", Arial, Helvetica, sans-serif;
   font-size: 0.82rem;
   line-height: 1.25rem;
   font-weight: 600;
@@ -156,4 +139,35 @@
 }
 @mixin no-decoration {
   text-decoration: none;
+}
+
+// btns
+@mixin btn-link {
+  text-decoration: none;
+  width: 100%;
+
+  @include tablet {
+    width: auto;
+  }
+  @include desktop {
+    width: auto;
+  }
+}
+
+@mixin btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 18px;
+  border-radius: 4px;
+}
+
+@mixin btn-text {
+  @include labels;
+  line-height: unset;
+  margin: 0;
+
+  @include tablet {
+    @include medium-labels;
+  }
 }

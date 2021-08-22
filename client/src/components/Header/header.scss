@@ -11,6 +11,14 @@
 
   &__logo {
     @include header;
+
+    @include medium {
+      @include medium-header;
+    }
+  }
+  &__logo-link {
+    @include no-decoration;
+    color: $text;
   }
 
   &__nav-container {
@@ -24,6 +32,10 @@
   &__item {
     @include labels;
     margin-right: 0.5rem;
+
+    @include medium {
+      @include medium-labels;
+    }
   }
   &__link {
     @include no-decoration;
@@ -32,6 +44,10 @@
     padding-bottom: 0.5rem;
     border-bottom: 1px solid transparent;
     transition: border-color 0.5s;
+
+    @include medium {
+      @include medium-labels;
+    }
 
     &:hover {
       border-color: $accent;

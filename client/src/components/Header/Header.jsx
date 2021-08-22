@@ -5,12 +5,14 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <article className="header">
-      <h1 className="header__logo">RallyBC</h1>
+      <Link className="header__logo-link" to="/">
+        <h1 className="header__logo">RallyBC</h1>
+      </Link>
       <nav className="header__nav-container">
         <article className="header__links">
           <ul className="header__links-container">
             <li className="header__item">
-              <Link className="header__link" to="">
+              <Link className="header__link" to="/about">
                 About
               </Link>
             </li>

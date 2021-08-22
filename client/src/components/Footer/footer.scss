@@ -1,0 +1,26 @@
+@import "../../partials/colors";
+@import "../../partials/fonts";
+@import "../../partials/mixins";
+@import "../../partials/screens";
+
+.footer {
+  @include mobile-container-padding;
+  @include flex-column;
+  justify-content: center;
+  align-items: center;
+
+  @include medium {
+    @include tablet-section-padding;
+  }
+
+  &__text {
+    font-family: "Monsterrat", Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: $accent;
+  }
+
+  &__icon {
+    color: $accent;
+    font-size: 14px;
+  }
+}

@@ -1,7 +1,8 @@
 const mongoose = require("mongoose"),
   validator = require("validator"),
   bcrypt = require("bcryptjs"),
-  jwt = require("jsonwebtoken");
+  jwt = require("jsonwebtoken"),
+  Post = require("./post");
 
 // user schema
 const userSchema = new mongoose.Schema({
@@ -50,6 +51,13 @@ const userSchema = new mongoose.Schema({
       },
     },
   ],
+});
+
+// create virtual relationship
+userSchema.virtual("posts", {
+  ref: "Post",
+  localField: "_id",
+  foreignField: "postedBy",
 });
 
 // instance method

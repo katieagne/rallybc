@@ -4,9 +4,9 @@ require("./db/config");
 const express = require("express"),
   morgan = require("morgan"),
   app = express(),
-  cookieParser = require("cookie-parser"),
-  openRoutes = require("./routes/open"),
-  secureRoutes = require("./routes/secure/users"),
+  openUserRoutes = require("./routes/open/users"),
+  openPostRoutes = require("./routes/open/posts"),
+  secureRoutes = require("./routes/secure/newPost"),
   cors = require("cors"),
   path = require("path"),
   authorize = require("./middleware/authorize");
@@ -19,11 +19,12 @@ app.use(express.json());
 // log all requests
 app.use(morgan("dev"));
 
-// unauthenticated routes
-app.use("/api/users", openRoutes);
+// open routes
+app.use("/api/users", openUserRoutes);
+app.use("/api/posts", openPostRoutes);
 
 // authenticated routes
-app.use("/current", authorize, secureRoutes);
+app.use("/api/posts", authorize, secureRoutes);
 
 if (process.env.NODE_ENV === "production") {
   // serve any static files

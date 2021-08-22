@@ -1,6 +1,7 @@
 const User = require("../db/models/user"),
   jwt = require("jsonwebtoken");
 
+// create a user
 exports.createUser = async (req, res) => {
   const { email, name, password, postalCode } = req.body;
   try {
@@ -23,6 +24,7 @@ exports.createUser = async (req, res) => {
   }
 };
 
+// log in a user
 exports.loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -40,10 +42,23 @@ exports.loginUser = async (req, res) => {
   }
 };
 
+// get all users
 exports.getAllUsers = async (req, res) => {
   try {
     const users = await User.find();
     res.json(users);
+  } catch (e) {
+    res.status(500).json({ error: e.toString() });
+  }
+};
+
+// get current user
+// exports.getCurrentUser = async (req, res) => res.json(req.user);
+exports.getCurrentUser = async (req, res) => {
+  try {
+    const user = await User.findOne({ email: req.decoded.email });
+    console.log(req.decoded.email);
+    res.status(201).json(user);
   } catch (e) {
     res.status(500).json({ error: e.toString() });
   }

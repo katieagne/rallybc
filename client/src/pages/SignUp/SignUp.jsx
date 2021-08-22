@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import "./signup.scss";
 
 const SignUp = () => {
   const createUser = (obj) => {
@@ -16,29 +17,52 @@ const SignUp = () => {
     };
     createUser(newUser);
     alert("submitted!!");
+    // this.props.history.push("/login");
   }
 
   return (
-    <div>
-      <h1>sign up page</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>your email</label>
-          <input type="email" name="email" />
+    <div className="signup">
+      <h1 className="signup__title">create an account</h1>
+      <form className="signup__form" onSubmit={handleSubmit}>
+        <div className="signup__input-container">
+          <label className="signup__input-label">your email</label>
+          <input
+            className="signup__input"
+            type="email"
+            name="email"
+            placeholder="Email"
+          />
         </div>
-        <div>
-          <label>your name</label>
-          <input type="text" name="name" />
+        <div className="signup__input-container">
+          <label className="signup__input-label">your name</label>
+          <input
+            className="signup__input"
+            type="text"
+            name="name"
+            placeholder="Name"
+          />
         </div>
-        <div>
-          <label>your password</label>
-          <input type="password" name="password" />
+        <div className="signup__input-container">
+          <label className="signup__input-label">your password</label>
+          <input
+            className="signup__input"
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
         </div>
-        <div>
-          <label>your postal code</label>
-          <input type="text" name="postalCode" />
+        <div className="signup__input-container">
+          <label className="signup__input-label">your postal code</label>
+          <input
+            className="signup__input"
+            type="text"
+            name="postalCode"
+            placeholder="Postal Code"
+          />
         </div>
-        <button type="submit">submit</button>
+        <button className="signup__submit" type="submit">
+          submit
+        </button>
       </form>
     </div>
   );

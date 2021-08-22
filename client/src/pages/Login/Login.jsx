@@ -1,17 +1,12 @@
 import axios from "axios";
 import React, { Component } from "react";
 import "./login.scss";
-import { API_URL } from "../../utils/util";
 import { Link } from "react-router-dom";
 
 class Login extends Component {
   state = {
     formData: null,
   };
-
-  // config = {
-  //   headers: { Authorization: `Bearer ${token}` },
-  // };
 
   handleChange = (e) => {
     this.setState({
@@ -21,28 +16,28 @@ class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.formData);
     axios
-      .post(`${API_URL}/api/users/login`, this.state.formData)
+      .post("http://localhost:8080/api/users/login", this.state.formData)
       .then((res) => {
         console.log(res.data);
         sessionStorage.setItem("token", res.data.userToken);
-        // this.props.history.push("/");
+        this.props.history.push("/");
+        console.log(this);
       })
       .catch((e) => console.log(e.message));
   };
   render() {
-    console.log(this);
     return (
       <div className="login">
-        <form classname="login__form" onSubmit={this.handleSubmit}>
+        <h1 className="login__title">login</h1>
+        <form className="login__form" onSubmit={this.handleSubmit}>
           <div className="login__input-container">
             <label className="login__input-label">email</label>
             <input
               className="login__input"
               type="email"
               name="email"
-              placeholder="Enter email"
+              placeholder="Your Email"
               onChange={this.handleChange}
             />
           </div>
@@ -52,12 +47,16 @@ class Login extends Component {
               className="login__input"
               type="password"
               name="password"
-              placeholder="Enter password"
+              placeholder="Your Password"
               onChange={this.handleChange}
             />
           </div>
-          <button type="submit">login</button>
-          <Link to="/signup">create an account</Link>
+          <button className="login__submit" type="submit">
+            login
+          </button>
+          <Link className="login__new" to="/signup">
+            create an account
+          </Link>
         </form>
       </div>
     );

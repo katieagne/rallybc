@@ -13,11 +13,12 @@ const Home = () => {
         src="https://arcg.is/1C9Hb90"
       ></iframe>
 
+      {/* resources section */}
       <section className="main__section-container">
         <h1 className="main__title">Resources</h1>
-        <article className="main__card main__card--resources">
-          <ul className="main__list">
-            <article className="main__list-container">
+        <article className="main__card-container">
+          <article className="main__card main__card--resources">
+            <ul className="main__list">
               <li className="main__list-item">
                 <a
                   className="main__item-link"
@@ -39,8 +40,6 @@ const Home = () => {
                   EmergencyInfoBC
                 </a>
               </li>
-            </article>
-            <article className="main__list-container">
               <li className="main__list-item">
                 <a
                   className="main__item-link"
@@ -54,23 +53,35 @@ const Home = () => {
                   Register for ESS
                 </a>
               </li>
-            </article>
-          </ul>
+            </ul>
+          </article>
+
+          <article className="main__card main__card--cta">
+            <h3 className="main__cta-title">Report a wildfire</h3>
+            <p className="main__cta-body">
+              Immediately call 1 800 663-5555 toll-free, or *5555 on a cell
+              phone to report wildfires, smoke columns and violations of
+              wildfire regulations in British Columbia.
+            </p>
+          </article>
         </article>
       </section>
 
-      <section className="main__section-container">
+      {/* topics section */}
+      <section className="main__section-container ">
         <h1 className="main__title">Topics</h1>
-        <Link className="main__card-link" to="/support">
-          <article className="main__card main__card--support">
-            <p className="main__card-title">Support</p>
-          </article>
-        </Link>
-        <Link className="main__card-link" to="/general">
-          <article className="main__card main__card--general">
-            <p className="main__card-title">General</p>
-          </article>
-        </Link>
+        <article className="main__card-container">
+          <Link className="main__card-link" to="/posts">
+            <article className="main__card main__card--support">
+              <p className="main__card-title">Support</p>
+            </article>
+          </Link>
+          <Link className="main__card-link" to="/posts">
+            <article className="main__card main__card--general">
+              <p className="main__card-title">General</p>
+            </article>
+          </Link>
+        </article>
       </section>
     </main>
   );

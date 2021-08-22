@@ -3,7 +3,7 @@
 @import "../../partials/mixins";
 @import "../../partials/screens";
 
-.login {
+.signup {
   @include mobile-container-padding;
   @include flex-column;
   justify-content: center;

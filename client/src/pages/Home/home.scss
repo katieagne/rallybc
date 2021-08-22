@@ -14,26 +14,42 @@
   &__map {
     width: 100%;
     height: 40vh;
+
+    @include medium {
+      height: 50vh;
+    }
   }
   &__section-container {
     @include mobile-container-padding;
+
+    @include medium {
+      @include tablet-section-padding;
+    }
   }
   &__title {
     @include labels;
     @include mobile-component-padding;
     color: $text;
+
+    @include medium {
+      @include medium-labels;
+    }
   }
   &__list {
-    @include flex;
-    justify-content: space-between;
+    @include flex-column;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
     list-style: none;
-  }
-  &__list-container {
-    width: calc(50% - 4px);
   }
   &__list-item {
     @include body-copy;
     margin-bottom: 1rem;
+    width: 50%;
+
+    @include medium {
+      @include medium-body-copy;
+    }
   }
   &__item-link {
     @include no-decoration;
@@ -45,9 +61,16 @@
       color: $accent;
     }
   }
+
+  &__card-container {
+    width: 100%;
+    @include large {
+      @include flex;
+      justify-content: space-between;
+    }
+  }
   &__card {
     @include flex;
-    background-color: $bg-alt;
     background-size: cover;
     background-position: 50%;
     width: 100%;
@@ -57,11 +80,36 @@
     align-items: center;
     padding: 0.6rem;
     box-shadow: 0px 6px 10px 1px #ccc;
+
+    @include small {
+      padding: 1.5rem;
+    }
+
+    @include medium {
+      height: 200px;
+    }
   }
   &__card--resources {
     justify-content: flex-start;
     align-items: center;
+    box-shadow: none;
+    border-radius: none;
+
+    @include large {
+      width: calc(50% - 24px);
+    }
   }
+  &__card--cta {
+    display: block;
+    background-color: $bg;
+    box-shadow: none;
+    border-radius: none;
+
+    @include large {
+      width: calc(50% - 24px);
+    }
+  }
+
   &__card--support {
     background-image: linear-gradient(
         rgb(50, 50, 50, 0.2),
@@ -96,11 +144,28 @@
     }
   }
   &__card-title {
-    @include header;
+    @include subheader;
     color: $text-light;
     text-transform: uppercase;
+
+    @include medium {
+      @include medium-subheader;
+    }
   }
   &__card-link {
     @include no-decoration;
+    width: auto;
+
+    @include large {
+      width: calc(50% - 24px);
+    }
+  }
+  &__cta-title {
+    @include medium-labels;
+    color: $accent;
+  }
+  &__cta-body {
+    @include medium-body-copy;
+    color: $text;
   }
 }
