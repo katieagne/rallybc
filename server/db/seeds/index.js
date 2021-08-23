@@ -40,8 +40,8 @@ const dbReset = async () => {
 
   for (let i = 0; i < 100; i++) {
     const post = new Post({
-      title: faker.name.title(),
-      content: faker.lorem.paragraph(),
+      title: faker.lorem.words(),
+      content: faker.lorem.sentences(),
       likes: 0,
       isGeneral: Boolean(Math.round(Math.random())),
       postedBy: userIdArray[Math.floor(Math.random() * userIdArray.length)],

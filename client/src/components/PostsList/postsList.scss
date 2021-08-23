@@ -1,0 +1,80 @@
+@import "../../partials/colors";
+@import "../../partials/fonts";
+@import "../../partials/mixins";
+@import "../../partials/screens";
+
+.post {
+  &__container {
+    padding: 1.5rem;
+    @include medium {
+      padding: 2rem;
+    }
+    border-radius: 4px;
+    background-color: $bg-alt;
+    margin: 1rem 0;
+  }
+
+  &__title {
+    font-family: "Monsterrat-Bold", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 6px;
+    color: $text;
+  }
+
+  &__new {
+    @include flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__content {
+    @include body-copy;
+    font-family: "Monsterrat-Medium";
+    color: #999;
+  }
+
+  &__date {
+    @include body-copy;
+    color: #999;
+  }
+  &__likes {
+    @include body-copy;
+    color: #999;
+  }
+
+  &__info-container {
+    @include flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 1px solid $bg;
+    margin: 12px 0;
+    padding: 6px 0;
+  }
+
+  &__link {
+    @include labels;
+    @include no-decoration;
+    font-size: 10px;
+    color: $accent;
+    background-color: $bg-alt;
+    border: 1px solid $accent;
+    border-radius: 8px;
+    padding: 6px 12px;
+    margin-right: 12px;
+    transition: 0.5s background-color, border-color;
+
+    &:hover {
+      background-color: #bad2f3;
+      border-color: #bad2f3;
+    }
+  }
+
+  &__link--delete {
+    background: $accent;
+    color: $text-light;
+    &:hover {
+      background-color: #bad2f3;
+      border-color: #bad2f3;
+    }
+  }
+}

@@ -12,7 +12,7 @@ const Header = () => {
         <article className="header__links">
           <ul className="header__links-container">
             <li className="header__item">
-              <Link className="header__link" to="/about">
+              <Link className="header__link" to="/">
                 About
               </Link>
             </li>
@@ -21,12 +21,6 @@ const Header = () => {
                 Login
               </Link>
             </li>
-            <li className="header__item">
-              <Link className="header__link" to="/posts/new">
-                post
-              </Link>
-            </li>
-            {/* Token check to hide this^^^^^ */}
           </ul>
         </article>
       </nav>

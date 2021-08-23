@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./posts.scss";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import PostsList from "../../components/PostsList/PostsList";
 import CreatePost from "../../components/CreatePost/CreatePost";
 import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
+import EditPost from "../../components/EditPost/EditPost";
+import DeletePost from "../../components/DeletePost/DeletePost";
+import SpecPost from "../../components/SpecPost/SpecPost";
 
 class Posts extends Component {
   state = {
@@ -20,10 +24,8 @@ class Posts extends Component {
   }
 
   render() {
-    console.log(this.state.posts);
     return (
       <div className="posts">
-        <h1 className="posts__title">posts page</h1>
         {this.state.posts && (
           <BrowserRouter>
             <Switch>
@@ -31,7 +33,44 @@ class Posts extends Component {
                 <PostsList allPosts={this.state.posts} />
               </Route>
               <Route exact path="/posts/new">
-                <ProtectedRoute component={CreatePost} />
+                <ProtectedRoute
+                  allPosts={this.state.posts}
+                  component={CreatePost}
+                />
+              </Route>
+              <Route exact path="/posts/edit/:id">
+                <ProtectedRoute
+                  allPosts={this.state.posts}
+                  component={EditPost}
+                />
+              </Route>
+              {/* <Route exact path="/posts/delete/:id">
+                <ProtectedRoute
+                  allPosts={this.state.posts}
+                  component={DeletePost}
+                />
+              </Route> */}
+
+              <Route
+                exact
+                path="/posts/delete/:id"
+                render={(routerParams) => {
+                  return (
+                    <>
+                      <DeletePost
+                        {...routerParams}
+                        allPosts={this.state.posts}
+                      />
+                    </>
+                  );
+                }}
+              ></Route>
+
+              <Route exact path="/posts/:id">
+                <ProtectedRoute
+                  allPosts={this.state.posts}
+                  component={SpecPost}
+                />
               </Route>
             </Switch>
           </BrowserRouter>

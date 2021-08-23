@@ -20,15 +20,12 @@ class Login extends Component {
       .post("http://localhost:8080/api/users/login", this.state.formData)
       .then((res) => {
         sessionStorage.setItem("token", res.data.userToken);
-        console.log(this.props);
         this.props.history.push("/");
       })
       .catch((e) => console.log(e.message));
   };
 
   render() {
-    const tokenOne = sessionStorage.getItem("token");
-    console.log(tokenOne);
     return (
       <div className="login">
         <h1 className="login__title">login</h1>

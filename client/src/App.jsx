@@ -10,6 +10,8 @@ import Posts from "./pages/Posts/Posts";
 import Footer from "./components/Footer/Footer";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import CreatePost from "./components/CreatePost/CreatePost";
+import EditPost from "./components/EditPost/EditPost";
+import DeletePost from "./components/DeletePost/DeletePost";
 
 function App() {
   return (
@@ -23,6 +25,12 @@ function App() {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/posts" component={Posts} />
           <ProtectedRoute exact path="/posts/new" component={CreatePost} />
+          <Route exact path="/posts/edit/:id">
+            <ProtectedRoute component={EditPost} />
+          </Route>
+          <Route exact path="/posts/delete/:id">
+            <ProtectedRoute component={DeletePost} />
+          </Route>
         </Switch>
         <Footer />
       </BrowserRouter>

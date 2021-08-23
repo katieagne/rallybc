@@ -1,0 +1,88 @@
+@import "../../partials/colors";
+@import "../../partials/fonts";
+@import "../../partials/mixins";
+@import "../../partials/screens";
+
+.create {
+  @include mobile-container-padding;
+  @include flex-column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  &__title {
+    @include header;
+    color: $text;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+
+    @include medium {
+      @include medium-header;
+    }
+  }
+  &__input-container {
+    @include flex-column;
+  }
+  &__form {
+    @include flex-column;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+  }
+  &__input-label {
+    @include labels;
+    color: $text;
+    margin-bottom: 0.5rem;
+
+    @include medium {
+      @include medium-labels;
+    }
+  }
+  &__input {
+    @include body-copy;
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid $accent;
+    border-radius: 4px;
+
+    @include medium {
+      @include medium-body-copy;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &__submit {
+    @include btn;
+    @include labels;
+    color: $text-light;
+    width: 100%;
+    background-color: $accent;
+    border: none;
+    transition: 0.5s background-color;
+    margin-bottom: 0.5rem;
+
+    &:hover {
+      background-color: #a9c4e9;
+    }
+
+    @include medium {
+      @include medium-labels;
+    }
+  }
+
+  &__button {
+    @include labels;
+    @include no-decoration;
+    color: $accent;
+    transition: 0.5s background-color, border-color;
+
+    @include medium {
+      @include medium-labels;
+    }
+
+    &:hover {
+      border-color: #bad2f3;
+    }
+  }
+}

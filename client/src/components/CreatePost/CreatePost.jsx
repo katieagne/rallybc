@@ -1,17 +1,16 @@
 import React from "react";
 import axios from "axios";
+import "./createPost.scss";
+import { Link } from "react-router-dom";
 
 const CreatePost = () => {
-  // const history = useHistory();
   const token = sessionStorage.getItem("token");
-  console.log(token);
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
 
   const createPost = (obj) => {
     axios.post("http://localhost:8080/api/posts", obj, config);
-    console.log("inside create post");
   };
 
   function handleSubmit(e) {
@@ -22,18 +21,35 @@ const CreatePost = () => {
     };
     createPost(newPost);
     alert("post created!");
-    // history.push("/posts");
   }
 
   return (
-    <div>
-      <h1>create post</h1>
-      <form onSubmit={handleSubmit}>
-        <label>title</label>
-        <input type="text" name="title" />
-        <label>post content</label>
-        <textarea name="content" />
-        <button type="submit">submit</button>
+    <div className="create">
+      <h1 className="create__title">create post</h1>
+      <form className="create__form" onSubmit={handleSubmit}>
+        <div className="create__input-container">
+          <label className="create__input-label">title</label>
+          <input
+            className="create__input"
+            type="text"
+            name="title"
+            placeholder="Add a title"
+          />
+        </div>
+        <div className="create__input-container">
+          <label className="create__input-label">content</label>
+          <textarea
+            className="create__input"
+            name="content"
+            placeholder="Add some text"
+          />
+        </div>
+        <button className="create__submit" type="submit">
+          submit
+        </button>
+        <Link className="create__button" to="/posts">
+          back to posts
+        </Link>
       </form>
     </div>
   );

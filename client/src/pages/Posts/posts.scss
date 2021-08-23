@@ -1,0 +1,21 @@
+@import "../../partials/colors";
+@import "../../partials/fonts";
+@import "../../partials/mixins";
+@import "../../partials/screens";
+
+.posts {
+  @include mobile-container-padding;
+
+  @include medium {
+    @include tablet-container-padding;
+  }
+
+  &__title {
+    @include labels;
+    text-transform: uppercase;
+    color: $text;
+    @include medium {
+      @include medium-labels;
+    }
+  }
+}

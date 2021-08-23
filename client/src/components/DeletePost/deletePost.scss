@@ -1,0 +1,47 @@
+@import "../../partials/colors";
+@import "../../partials/fonts";
+@import "../../partials/mixins";
+@import "../../partials/screens";
+
+.delete {
+  @include mobile-container-padding;
+
+  width: 100%;
+  max-width: 400px;
+
+  @include medium {
+    @include tablet-section-padding;
+  }
+  &__title {
+    @include body-copy-bold;
+    color: $text;
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+
+    @include medium {
+      @include medium-body-copy-bold;
+    }
+  }
+
+  &__button {
+    background: $accent;
+    color: $text-light;
+    @include labels;
+    font-size: 10px;
+    @include no-decoration;
+    border: 1px solid $accent;
+    border-radius: 8px;
+    padding: 6px 12px;
+    margin-right: 12px;
+    transition: 0.5s background-color, border-color;
+
+    @include medium {
+      @include medium-labels;
+    }
+
+    &:hover {
+      background-color: #bad2f3;
+      border-color: #bad2f3;
+    }
+  }
+}
