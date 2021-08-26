@@ -80,7 +80,7 @@ exports.deletePost = async (req, res) => {
 
 exports.getAllPosts = async (req, res) => {
   try {
-    const posts = await Post.find();
+    const posts = await Post.find().sort({ _id: -1 });
     res.json(posts);
   } catch (e) {
     res.status(500).json({ error: e.toString() });

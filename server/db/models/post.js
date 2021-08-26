@@ -36,15 +36,6 @@ const postSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// postSchema.methods.toJSON = function () {
-//   const post = this;
-//   const postObject = post.toObject();
-//   if (postObject.dueDate) {
-//     postObject.dueDate = moment(postObject.dueDate).format('YYYY-MM-DD');
-//   }
-//   return postObject;
-// };
-
 const Post = mongoose.model("Post", postSchema);
 
 module.exports = Post;

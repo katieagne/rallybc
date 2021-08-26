@@ -40,6 +40,7 @@ class Posts extends Component {
       .then((res) => {
         this.setState({ posts: res.data });
         alert("Post is deleted");
+        this.props.history.goBack();
       })
       .catch((e) => {
         alert("You need to be signed in to delete this post");
