@@ -7,11 +7,21 @@ import CreatePost from "../../components/CreatePost/CreatePost";
 import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
 import EditPost from "../../components/EditPost/EditPost";
 import DeletePost from "../../components/DeletePost/DeletePost";
-import SpecPost from "../../components/SpecPost/SpecPost";
+import up from "../../assets/icons/up-arrow.png";
 
 class Posts extends Component {
   state = {
     posts: [],
+  };
+
+  token = sessionStorage.getItem("token");
+  config = {
+    headers: { Authorization: `Bearer ${this.token}` },
+  };
+
+  // scroll to top
+  useEffect = () => {
+    window.scrollTo(0, 0);
   };
 
   componentDidMount() {
@@ -23,6 +33,19 @@ class Posts extends Component {
       .catch((error) => console.log(error));
   }
 
+  // delete a post
+  onDelete = (id) => {
+    axios
+      .delete(`http://localhost:8080/api/posts/${id}`, this.config)
+      .then((res) => {
+        this.setState({ posts: res.data });
+        alert("Post is deleted");
+      })
+      .catch((e) => {
+        alert("You need to be signed in to delete this post");
+      });
+  };
+
   render() {
     return (
       <div className="posts">
@@ -32,24 +55,25 @@ class Posts extends Component {
               <Route exact path="/posts">
                 <PostsList allPosts={this.state.posts} />
               </Route>
-              <Route exact path="/posts/new">
-                <ProtectedRoute
-                  allPosts={this.state.posts}
-                  component={CreatePost}
-                />
-              </Route>
-              <Route exact path="/posts/edit/:id">
-                <ProtectedRoute
-                  allPosts={this.state.posts}
-                  component={EditPost}
-                />
-              </Route>
-              {/* <Route exact path="/posts/delete/:id">
-                <ProtectedRoute
-                  allPosts={this.state.posts}
-                  component={DeletePost}
-                />
-              </Route> */}
+
+              <ProtectedRoute
+                exact
+                path="/posts/new"
+                allPosts={this.state.posts}
+                component={CreatePost}
+              />
+
+              <Route
+                exact
+                path="/posts/edit/:id"
+                render={(routerParams) => {
+                  return (
+                    <>
+                      <EditPost {...routerParams} allPosts={this.state.posts} />
+                    </>
+                  );
+                }}
+              ></Route>
 
               <Route
                 exact
@@ -60,21 +84,20 @@ class Posts extends Component {
                       <DeletePost
                         {...routerParams}
                         allPosts={this.state.posts}
+                        onDelete={this.onDelete}
                       />
                     </>
                   );
                 }}
               ></Route>
 
-              <Route exact path="/posts/:id">
-                <ProtectedRoute
-                  allPosts={this.state.posts}
-                  component={SpecPost}
-                />
-              </Route>
+              {/* <ProtectedRoute exact path="/posts/new" component={CreatePost} /> */}
             </Switch>
           </BrowserRouter>
         )}
+        <button className="posts__top-btn" onClick={this.useEffect}>
+          <img className="posts__btn-img" src={up} alt="arrow to scroll up" />
+        </button>
       </div>
     );
   }

@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { Component } from "react";
 
 export default class EditPost extends Component {
@@ -11,12 +12,26 @@ export default class EditPost extends Component {
     content: null,
   };
 
+  posts = axios.get("http://localhost:8080/api/posts");
+
   handleSubmit = (e) => {
     e.preventDefault();
-    // const newPost = {
-    //   title: e.target.title.value,
-    //   content: e.target.content.value,
-    // };
+    const newPost = {
+      title: e.target.title.value,
+      content: e.target.content.value,
+    };
+
+    if (!newPost.title || !newPost.content) {
+      alert("Please fill out all fields");
+    } else {
+      axios
+        .put(
+          "http://localhost:8080/api/posts/" + this.props.match.params.id,
+          newPost,
+          this.config
+        )
+        .then(this.props.history.push("/posts"));
+    }
   };
 
   changeTitle = (e) => {
@@ -25,6 +40,23 @@ export default class EditPost extends Component {
   changeContent = (e) => {
     this.setState({ content: e.value });
   };
+
+  // componentDidMount() {
+  //   axios
+  //     .get("http://localhost:8080/api/posts")
+  //     .then((response) => {
+  //       response.data.forEach((post) => {
+  //         this.setState({
+  //           postList: [...this.state.postList],
+  //         });
+  //       });
+  //     })
+  //     .then(console.log(this));
+  //   // .then(this.setState({
+  //   //     title: (this.itemDetails.categories),
+  //   //     stock: (this.itemDetails.status === "In Stock"),
+  //   // }))
+  // }
 
   render() {
     return (

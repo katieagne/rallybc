@@ -2,12 +2,15 @@ import React from "react";
 import axios from "axios";
 import "./createPost.scss";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 
 const CreatePost = () => {
   const token = sessionStorage.getItem("token");
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
+
+  const history = useHistory();
 
   const createPost = (obj) => {
     axios.post("http://localhost:8080/api/posts", obj, config);
@@ -20,7 +23,8 @@ const CreatePost = () => {
       content: e.target.content.value,
     };
     createPost(newPost);
-    alert("post created!");
+    alert("Your post has been created!");
+    history.push("/posts");
   }
 
   return (

@@ -1,8 +1,10 @@
 import React from "react";
 import axios from "axios";
 import "./signup.scss";
+import { useHistory } from "react-router-dom";
 
 const SignUp = () => {
+  const history = useHistory();
   const createUser = (obj) => {
     axios.post("http://localhost:8080/api/users", obj);
   };
@@ -16,8 +18,8 @@ const SignUp = () => {
       postalCode: e.target.postalCode.value,
     };
     createUser(newUser);
-    alert("submitted!!");
-    // this.props.history.push("/login");
+    alert("Your account has been created!");
+    history.push("/login");
   }
 
   return (
@@ -61,7 +63,7 @@ const SignUp = () => {
           />
         </div>
         <button className="signup__submit" type="submit">
-          submit
+          sign up
         </button>
       </form>
     </div>

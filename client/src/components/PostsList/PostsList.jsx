@@ -1,17 +1,34 @@
 import React from "react";
 import "./postsList.scss";
 import { Link } from "react-router-dom";
+import down from "../../assets/icons/down-arrow.png";
 
 const PostsList = ({ allPosts }) => {
   const posts = allPosts;
+  function refreshNew() {
+    window.location.href = "/posts/new";
+  }
+
+  function useEffect() {
+    window.scrollTo(0, document.body.scrollHeight);
+  }
 
   return (
     <>
       {posts && (
         <div className="post">
           <div className="post__new">
-            <h1 className="posts__title">Posts</h1>
-            <Link className="post__link " to="/posts/new">
+            <div className="post__wrapper">
+              <h1 className="posts__title">Posts</h1>
+              <button className="post__btm-btn" onClick={useEffect}>
+                <img
+                  className="post__down-img"
+                  src={down}
+                  alt="arrow to scroll to bottom"
+                />
+              </button>
+            </div>
+            <Link className="post__link " to="/posts/new" onClick={refreshNew}>
               add post
             </Link>
           </div>
@@ -28,9 +45,7 @@ const PostsList = ({ allPosts }) => {
                     <p className="post__date">on {data.createdAt}</p>
                     <p className="post__likes">likes {data.likes}</p>
                   </div>
-                  <Link className="post__link" to={`/posts/edit/${data._id}`}>
-                    edit
-                  </Link>
+
                   <Link
                     className="post__link post__link--delete"
                     to={`/posts/delete/${data._id}`}

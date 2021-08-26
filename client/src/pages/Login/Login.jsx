@@ -22,7 +22,10 @@ class Login extends Component {
         sessionStorage.setItem("token", res.data.userToken);
         this.props.history.push("/");
       })
-      .catch((e) => console.log(e.message));
+      .catch((e) => {
+        alert("User does not exist, please create an account!");
+        console.log(e.message);
+      });
   };
 
   render() {

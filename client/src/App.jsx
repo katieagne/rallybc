@@ -28,9 +28,15 @@ function App() {
           <Route exact path="/posts/edit/:id">
             <ProtectedRoute component={EditPost} />
           </Route>
-          <Route exact path="/posts/delete/:id">
+          {/* <Route exact path="/posts/delete/:id">
             <ProtectedRoute component={DeletePost} />
-          </Route>
+          </Route> */}
+
+          <ProtectedRoute
+            exact
+            path="/posts/delete/:id"
+            component={DeletePost}
+          />
         </Switch>
         <Footer />
       </BrowserRouter>
