@@ -16,7 +16,7 @@ import DeletePost from "./components/DeletePost/DeletePost";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter forceRefresh={true}>
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />

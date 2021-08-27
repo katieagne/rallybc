@@ -71,7 +71,7 @@ exports.deletePost = async (req, res) => {
       // postedBy: req.user._id,
     });
     if (!post) return res.status(404).json({ error: "post not found" });
-    const posts = await Post.find();
+    const posts = await Post.find().sort({ _id: -1 });
     res.json(posts);
   } catch (e) {
     res.status(500).json({ error: e.toString() });
