@@ -1,7 +1,7 @@
 ## RallyBC
 
 ![image of RallyBC]
-(/client/src/assets/images/RallyBC.png)
+(images/RallyBC.png)
 
 **RallyBC** is a discussion-based social media type of web app for communities in British Columbia, Canada that are impacted by forest fires across the province
 
