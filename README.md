@@ -2,6 +2,8 @@
 
 **RallyBC** is a discussion-based social media type of web app for communities in British Columbia, Canada that are impacted by forest fires across the province
 
+To view it live, click [here](https://rallybc.herokuapp.com/)
+
 ### Getting Started
 
 **Fork and Configure**
