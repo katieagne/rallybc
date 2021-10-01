@@ -14,9 +14,8 @@
 - Once you have forked the above repo, `git clone git@github.com:katieagne/rallybc.git`
 - `cd` into `katie-agne-capstone`
 - `cd client && npm i`
-- `cd ..`
-- `cd server && npm i`
-- `cp .env.sample .env`
+- `cd .. && npm i`
+- `cp sample.env .env`
 - in your `.env` file, add a value for your `JWT_SECRET` env variable - choose any value
 
 **Database Seeding**
