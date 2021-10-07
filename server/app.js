@@ -38,6 +38,10 @@ if (process.env.NODE_ENV === "production") {
       path.resolve(__dirname, "..", "client", "build", "index.html")
     );
   });
+} else {
+  app.get("/", (req, res) => {
+    res.send("API running");
+  });
 }
 
 module.exports = app;
