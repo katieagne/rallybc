@@ -1,7 +1,6 @@
 ## RallyBC
 
-**RallyBC** is a discussion-based social media type of web app for communities in British Columbia, Canada that are impacted by forest fires across the province
-
+**RallyBC** is a discussion-based social media type of web app for communities in British Columbia, Canada that are impacted by forest fires across the province. You can watch me demo my project [here](https://www.canva.com/design/DAEqJWgXggc/n0xLJvsku1vRnK6vzn7Z1Q/view?)
 
 ### Getting Started
 
