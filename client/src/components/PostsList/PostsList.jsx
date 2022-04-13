@@ -5,6 +5,7 @@ import down from "../../assets/icons/down-arrow.png";
 
 const PostsList = ({ allPosts }) => {
   const posts = allPosts;
+
   function refreshNew() {
     window.location.href = "/posts/new";
   }
@@ -46,12 +47,16 @@ const PostsList = ({ allPosts }) => {
                     <p className="post__likes">likes {data.likes}</p>
                   </div>
 
-                  <Link
-                    className="post__link post__link--delete"
-                    to={`/posts/delete/${data._id}`}
-                  >
-                    delete
-                  </Link>
+                  {sessionStorage.getItem("token") === null ? (
+                    ""
+                  ) : (
+                    <Link
+                      className="post__link post__link--delete"
+                      to={`/posts/delete/${data._id}`}
+                    >
+                      delete
+                    </Link>
+                  )}
                 </div>
               );
             })}
